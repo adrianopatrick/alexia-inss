@@ -1,20 +1,19 @@
-const https = require('https');
+const https = require('https') //.globalAgent.options.ca = require('ssl-root-cas/latest').create();
+const fs = require("fs")
 
 exports.get = async (req, res, next) => {
   console.log('vai chamar');
   const response = await httpGet(req.params.cep);
-  console.log(JSON.stringify(response));
-  // res.status(200).send(`Encontrei a ${response[0].nome}, ela fica localizada na ${response[0].enderecoAps}, ela está aberta de ${response[0].horarioAtendimento}`);
-  res.status(200).send(`${response.value.joke}`);
+  res.status(200).send(`Encontrei a ${response[0].nome}, ela fica localizada na ${response[0].enderecoAps}, ela está aberta de ${response[0].horarioAtendimento}`);
 }
 
 function httpGet(cep) {
+  const absolutePath = require.resolve('./inssgovbr.pem');
   return new Promise(((resolve, reject) => {
     var options = {
-      host: 'api.icndb.com',
-        port: 443,
-        path: '/jokes/random',
-        method: 'GET',
+      host: 'vip-hmeuinssprxr.inss.gov.br',
+      path: '/apis/localizadorApsServices/buscaCep/60822168',
+      method: 'GET',
     };
     
     const request = https.request(options, (response) => {
