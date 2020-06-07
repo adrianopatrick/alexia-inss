@@ -1,8 +1,9 @@
 const https = require('https');
 
 exports.get = async (req, res, next) => {
-
+  console.log('vai chamar');
   const response = await httpGet(req.params.cep);
+  console.log(JSON.stringify(response));
   res.status(200).send(`Encontrei a ${response[0].nome}, ela fica localizada na ${response[0].enderecoAps}, ela está aberta de ${response[0].horarioAtendimento}`);
 }
 
