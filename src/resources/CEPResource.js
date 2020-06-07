@@ -23,7 +23,11 @@ function httpGet(cep) {
       });
 
       response.on('end', () => {
-        resolve(JSON.parse(returnData));
+        if(response.statusCode === 200) {
+          resolve(JSON.parse(returnData));
+        } else {
+          reject('Não conseguiu consultar.');
+        }
       });
 
       response.on('error', (error) => {
