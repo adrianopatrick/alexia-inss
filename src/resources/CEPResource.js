@@ -1,5 +1,4 @@
-const https = require('https') //.globalAgent.options.ca = require('ssl-root-cas/latest').create();
-const fs = require("fs")
+const https = require('https')
 
 exports.get = async (req, res, next) => {
   console.log('vai chamar');
@@ -8,12 +7,11 @@ exports.get = async (req, res, next) => {
 }
 
 function httpGet(cep) {
-  const absolutePath = require.resolve('./inssgovbr.pem');
   return new Promise(((resolve, reject) => {
     var options = {
       host: 'vip-hmeuinssprxr.inss.gov.br',
       path: '/apis/localizadorApsServices/buscaCep/60822168',
-      method: 'GET',
+      method: 'GET'
     };
     
     const request = https.request(options, (response) => {
