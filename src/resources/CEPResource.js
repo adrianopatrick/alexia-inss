@@ -11,9 +11,10 @@ exports.get = async (req, res, next) => {
 function httpGet(cep) {
   return new Promise(((resolve, reject) => {
     var options = {
-      host: 'vip-pmeuinssprxr.inss.gov.br',
-      path: `/apis/localizadorApsServices/buscaCep/${cep}`,
-      method: 'GET',
+      host: 'api.icndb.com',
+        port: 443,
+        path: '/jokes/random',
+        method: 'GET',
     };
     
     const request = https.request(options, (response) => {
