@@ -4,15 +4,16 @@ exports.get = async (req, res, next) => {
   console.log('vai chamar');
   const response = await httpGet(req.params.cep);
   console.log(JSON.stringify(response));
-  res.status(200).send(`Encontrei a ${response[0].nome}, ela fica localizada na ${response[0].enderecoAps}, ela está aberta de ${response[0].horarioAtendimento}`);
+  // res.status(200).send(`Encontrei a ${response[0].nome}, ela fica localizada na ${response[0].enderecoAps}, ela está aberta de ${response[0].horarioAtendimento}`);
+  res.status(200).send(`${response.value.joke}`);
 }
 
 function httpGet(cep) {
   return new Promise(((resolve, reject) => {
     var options = {
-        host: 'vip-pmeuinssprxr.inss.gov.br',
-        path: `/apis/localizadorApsServices/buscaCep/${cep}`,
-        method: 'GET',
+      host: 'vip-pmeuinssprxr.inss.gov.br',
+      path: `/apis/localizadorApsServices/buscaCep/${cep}`,
+      method: 'GET',
     };
     
     const request = https.request(options, (response) => {
