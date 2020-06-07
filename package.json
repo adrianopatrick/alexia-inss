@@ -1,0 +1,17 @@
+{
+  "name": "alexia-inss",
+  "version": "1.0.0",
+  "author": "patrick.cunha",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon",
+    "prod": "pm2 start src/loader.js --name todo-app"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "redis": "^2.8.0"
+  }
+}
